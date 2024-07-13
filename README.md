@@ -33,3 +33,5 @@ Run the server
 ```bash
 php artisan serve
 ```
+
+_Note:Please check ContentFilteringSystem.postman_collection.json for API using Postman._
