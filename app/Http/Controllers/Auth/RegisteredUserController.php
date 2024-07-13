@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
@@ -33,8 +32,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        $userToken = $user->createToken($user->name)->plainTextToken;
 
-        return response()->json(['user' => $user]);
+        return response()->json(compact('userToken', 'user'));
     }
 }
