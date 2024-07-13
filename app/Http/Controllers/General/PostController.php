@@ -52,4 +52,11 @@ class PostController extends Controller
 
         return response()->noContent();
     }
+
+    public function report($id): Response
+    {
+        $this->postRepository->report($id);
+
+        return response()->noContent();
+    }
 }

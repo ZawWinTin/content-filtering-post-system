@@ -3,6 +3,7 @@
 namespace App\Repositories\General;
 
 use App\Models\Post;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 class PostRepository
@@ -58,5 +59,15 @@ class PostRepository
         $post = Post::findOrFail($id);
 
         $post->delete();
+    }
+
+    public function report($id)
+    {
+        $post = Post::findOrFail($id);
+
+        Report::create([
+            'user_id' => auth()->id(),
+            'post_id' => $post->id,
+        ]);
     }
 }

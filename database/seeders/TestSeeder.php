@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder
@@ -15,9 +16,12 @@ class TestSeeder extends Seeder
     {
         $usersCount = 10;
         $postsCount = 30;
+        $reportsCount = 15;
 
         User::factory($usersCount)->create();
 
         Post::factory($postsCount)->create();
+
+        Report::factory($reportsCount)->create();
     }
 }

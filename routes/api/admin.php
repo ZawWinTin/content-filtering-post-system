@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReportController;
 
 Route::prefix(config('superadmin.auth.route_prefix'))->name('admin.')->group(function () {
     Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
@@ -16,5 +17,8 @@ Route::prefix(config('superadmin.auth.route_prefix'))->name('admin.')->group(fun
         Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
         Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
         Route::post('/posts/{id}/restore', [PostController::class, 'restore'])->name('post.restore');
+
+        Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
+        Route::put('/reports', [ReportController::class, 'update'])->name('report.update');
     });
 });

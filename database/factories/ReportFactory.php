@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
  */
-class PostFactory extends Factory
+class ReportFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,12 +19,12 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $user = User::user()->inRandomOrder()->first();
+        $post = Post::inRandomOrder()->first();
         $date = now()->subDay(rand(1, 20));
 
         return [
-            'content' => fake()->realText(),
             'user_id' => $user->id,
-            'is_harmful_content' => fake()->boolean(),
+            'post_id' => $post->id,
             'created_at' => $date,
             'updated_at' => $date,
         ];
