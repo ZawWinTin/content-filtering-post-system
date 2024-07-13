@@ -28,7 +28,7 @@ class PostRepository
         return compact('post');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $post = $this->save($request);
 
@@ -51,5 +51,12 @@ class PostRepository
                 'content' => $request->content,
             ],
         );
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->delete();
     }
 }

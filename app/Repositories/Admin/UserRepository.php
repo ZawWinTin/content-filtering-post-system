@@ -32,4 +32,18 @@ class UserRepository
 
         return compact('posts');
     }
+
+    public function destroy($id)
+    {
+        $post = User::findOrFail($id);
+
+        $post->delete();
+    }
+
+    public function restore($id)
+    {
+        $post = User::onlyTrashed()->findOrFail($id);
+
+        $post->restore();
+    }
 }

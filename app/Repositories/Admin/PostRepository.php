@@ -28,4 +28,18 @@ class PostRepository
 
         return compact('post');
     }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+    }
+
+    public function restore($id)
+    {
+        $post = Post::onlyTrashed()->findOrFail($id);
+
+        $post->restore();
+    }
 }

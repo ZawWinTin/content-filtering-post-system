@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\General;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Repositories\General\PostRepository;
@@ -31,9 +32,9 @@ class PostController extends Controller
         return response()->json($data);
     }
 
-    public function create(PostCreateRequest $request): JsonResponse
+    public function store(PostCreateRequest $request): JsonResponse
     {
-        $data = $this->postRepository->create($request);
+        $data = $this->postRepository->store($request);
 
         return response()->json($data);
     }
@@ -43,5 +44,12 @@ class PostController extends Controller
         $data = $this->postRepository->update($request);
 
         return response()->json($data);
+    }
+
+    public function destroy($id): Response
+    {
+        $this->postRepository->destroy($id);
+
+        return response()->noContent();
     }
 }
