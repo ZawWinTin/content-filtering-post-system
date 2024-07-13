@@ -19,7 +19,7 @@ class UserRepository
     {
         $user = User::withTrashed()->findOrFail($id);
 
-        return compact('post');
+        return compact('user');
     }
 
     public function getPosts($id)

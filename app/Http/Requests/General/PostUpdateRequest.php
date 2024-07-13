@@ -23,7 +23,7 @@ class PostUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['nullable', 'exists:posts,id,deleted_at,NULL'],
+            'id' => ['required', 'exists:posts,id,deleted_at,NULL'],
             'content' => ['required', 'string', 'max:2000'],
         ];
     }
