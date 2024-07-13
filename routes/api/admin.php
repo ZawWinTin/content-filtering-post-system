@@ -19,6 +19,6 @@ Route::prefix(config('superadmin.auth.route_prefix'))->name('admin.')->group(fun
         Route::post('/posts/{id}/restore', [PostController::class, 'restore'])->name('post.restore');
 
         Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
-        Route::put('/reports', [ReportController::class, 'update'])->name('report.update');
+        Route::post('/reports', [ReportController::class, 'update'])->name('report.update');
     });
 });

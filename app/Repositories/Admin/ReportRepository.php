@@ -34,7 +34,7 @@ class ReportRepository
             ]);
 
             $report->post()->update([
-                'is_harmful_content' => $request->is_harmful_content
+                'is_harmful_content' => $request->is_harmful_content,
             ]);
 
             DB::commit();
